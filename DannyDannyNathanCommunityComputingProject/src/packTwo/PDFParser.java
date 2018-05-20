@@ -27,7 +27,6 @@ public class PDFParser {
     	   		charactersSeen += byPage[i].length();
     	   		this.truePageNums.add(i+1+difference);
     	   		this.fullText += byPage[i];
-    	   	//fullText += "<p"+(i+1+difference)+">";
        }
 }
     

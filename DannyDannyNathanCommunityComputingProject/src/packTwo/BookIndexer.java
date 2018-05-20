@@ -16,30 +16,11 @@ import java.util.HashMap;
 public class BookIndexer
 {
 	private String classifierLocation = "classifiers/english.muc.7class.distsim.crf.ser"; // the location of the classifier to be used by ner
-	private File indexOutputLocation = new File("testData/indexOutput.txt"); // the file that the index will be written to
 	private File inputFile;		//the file that was last selected to be the input to the program
-	
-	//TODO: TEXT_OUTPUT_LOCATION is a temporary file that never gets deleted from the file system
-	private File textOutputLocation = new File("testdata/xmlToText.txt"); // the temporary file that xmlParser will write the book plaintext to
 	
 	public void selectInputFile(File selection)
 	{
 		inputFile = selection;
-	}
-	
-	public void setClassifier(File selection)
-	{
-		classifierLocation = selection.getName();
-	}
-	
-	public void setIndexOutputLocation(File selection)
-	{
-		indexOutputLocation = selection;
-	}
-	
-	public void setPlaintextLocation(File selection)
-	{
-		textOutputLocation = selection;
 	}
 	
 	// TODO: handle case where inputFile is null

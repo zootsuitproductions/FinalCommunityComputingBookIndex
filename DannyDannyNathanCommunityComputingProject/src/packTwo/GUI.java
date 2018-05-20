@@ -10,6 +10,8 @@ import processing.core.PApplet;
 
 public class GUI extends PApplet
 {
+	//this class uses processing code
+	
 	private Boolean hasUploadedFile = false;
 	private String errorMessage;
 	private BookIndexer bookProcessor;
@@ -35,6 +37,7 @@ public class GUI extends PApplet
 	@Override
 	public void draw()
 	{
+		//makes the interface
 		background(255, 255, 255);
 
 		stroke(255, 0, 0);
@@ -60,13 +63,13 @@ public class GUI extends PApplet
 	public void mousePressed()
 	{
 		if(((0.1 * width) < mouseX) && (mouseX < (0.9 * width)) && ((0.1 * height) < mouseY) && (mouseY < (0.4 * height))) {
-			selectInput("Select the downloaded XML file", "selectXML");
+			selectInput("Select the downloaded XML file", "selectPDF");
 		} else if(((0.1 * width) < mouseX) && (mouseX < (0.9 * width)) && ((0.5 * height) < mouseY) && (mouseY < (0.9 * height))) {
 			processBook();
 		}
 	}
 
-	public void selectXML(File selection)
+	public void selectPDF(File selection)
 	{
 		if(selection == null)
 		{
@@ -87,41 +90,12 @@ public class GUI extends PApplet
 		}
 	}
 
-	public void selectTextLocation(File selection)
-	{
-		if(selection == null)
-		{
-			println("You didn't select an acceptable temporary file location.");
-			errorMessage = "File selection error (text).";
-		}
-		else
-		{
-			bookProcessor.setPlaintextLocation(selection);
-			errorMessage = "Selecting temp text location succeeded.";
-		}
-	}
-
-	public void selectOutputLocation(File selection)
-	{
-		if(selection == null)
-		{
-			println("You didn't select an acceptable index output location.");
-			errorMessage = "File selection error (index).";
-		}
-		else
-		{
-			bookProcessor.setIndexOutputLocation(selection);
-			errorMessage = "Selecting index location succeeded.";
-		}
-	}
-
 	public void processBook()
 	{
 		errorMessage = "Starting generating an index.";
 		try {
 			bookProcessor.processFile();
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (hasUploadedFile) {
